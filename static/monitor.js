@@ -42,12 +42,8 @@ const chart = new Chart(historyCtx, {
 // recommendations map
 const RECOMMENDATIONS = {
   Happy: "You're looking great — play an upbeat song!",
-  Sad: "Try a short walk, or watch something uplifting.",
-  Angry: "Pause and take 3 slow breaths.",
-  Neutral: "You're calm — try a focused work session.",
-  Surprise: "Check a fun fact or a quick puzzle.",
-  Fear: "Grounding: name 5 things you see, 4 you can touch.",
-  Disgust: "Play a relaxing or funny clip to shift mood.",
+  Sad: "Take a short walk or talk to someone you trust.",
+  Neutral: "You seem calm — maybe focus on work or enjoy a quiet break.",
 };
 
 function setOverlaySize() {

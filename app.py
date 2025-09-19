@@ -30,7 +30,11 @@ bcrypt = Bcrypt(app)
 login_manager = LoginManager(app)
 login_manager.login_view = "login"
 
+# All classes from original training
 CLASS_LABELS = ['Angry', 'Disgust', 'Fear', 'Happy', 'Sad', 'Surprise', 'Neutral']
+
+# Only the three we care about
+TARGET_LABELS = ["Happy", "Sad", "Neutral"]
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -64,6 +68,23 @@ def load_emotion_model():
     raise RuntimeError("Model files not found: place emotiondetector.h5 and/or emotiondetector.json in project folder.")
 
 emotion_model = load_emotion_model()
+def map_to_three(pred_array):
+    """
+    pred_array: 1D numpy array of length 7 from the original model.
+    Returns: (label, confidence) among ['Happy','Sad','Neutral']
+    """
+    idx_happy = CLASS_LABELS.index("Happy")
+    idx_sad = CLASS_LABELS.index("Sad")
+    idx_neutral = CLASS_LABELS.index("Neutral")
+
+    scores = {
+        "Happy": pred_array[idx_happy],
+        "Sad": pred_array[idx_sad],
+        "Neutral": pred_array[idx_neutral]
+    }
+    best = max(scores, key=scores.get)
+    return best, float(scores[best])
+
 face_cascade = cv2.CascadeClassifier(CASCADE_FILE)
 if face_cascade.empty():
     print("[WARN] Haar cascade may not have loaded. Check haarcascade_frontalface_default.xml exists.")
@@ -99,9 +120,7 @@ def predict_on_frame_bgr(img_bgr):
         face_input = np.expand_dims(face_norm, axis=0)  # (1,48,48)
         face_input = np.expand_dims(face_input, axis=-1)  # (1,48,48,1)
         preds = emotion_model.predict(face_input)[0]
-        idx = int(np.argmax(preds))
-        label = CLASS_LABELS[idx] if idx < len(CLASS_LABELS) else str(idx)
-        conf = float(np.max(preds))
+        label, conf = map_to_three(preds)
         results.append({"label": label, "confidence": conf, "box": [int(x1), int(y1), int(x2-x1), int(y2-y1)]})
     return results
 
