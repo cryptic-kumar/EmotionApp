@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Emotion Detector</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="stylesheet" href="/static/style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Real-Time Emotion Detector</h1>
+
+      <div class="video-wrap">
+        <video id="video" autoplay playsinline></video>
+        <canvas id="overlay"></canvas>
+        <canvas
+          id="canvas"
+          width="480"
+          height="360"
+          style="display: none"
+        ></canvas>
+      </div>
+
+      <div class="controls">
+        <button id="startBtn">Start</button>
+        <button id="stopBtn">Stop</button>
+        <label>Interval (ms):</label>
+        <input id="interval" type="number" value="1000" min="200" step="100" />
+      </div>
+
+      <div id="status">Status: idle</div>
+
+      <div id="output">
+        <h2>Predictions</h2>
+        <div id="predictions">—</div>
+
+        <h2>Recommendations</h2>
+        <div id="recommendation">—</div>
+
+        <h2>History</h2>
+        <canvas id="historyChart" height="180"></canvas>
+      </div>
+    </div>
+    <script src="/static/script.js"></script>
+  </body>
+</html>

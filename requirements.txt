@@ -1,0 +1,9 @@
+flask
+flask-login
+flask-bcrypt
+flask-sqlalchemy
+tensorflow==2.15.0
+opencv-python
+numpy<2
+Pillow
+chart.js

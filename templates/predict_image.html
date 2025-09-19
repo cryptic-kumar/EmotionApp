@@ -1,0 +1,40 @@
+{% extends "base.html" %} {% block content %}
+<div class="card">
+  <h2>Predict from Image</h2>
+
+  <form method="post" enctype="multipart/form-data">
+    <input type="file" name="file" accept="image/*" required />
+    <div style="margin-top: 8px">
+      <button class="btn" type="submit">Analyze Image</button>
+    </div>
+  </form>
+
+  {% if image_data %}
+  <h3>Result</h3>
+  <div class="result-block">
+    <img
+      src="{{ image_data }}"
+      alt="Annotated"
+      style="
+        max-width: 100%;
+        height: auto;
+        border-radius: 6px;
+        border: 1px solid rgba(255, 255, 255, 0.06);
+      "
+    />
+    <div class="pred-list">
+      <h4>Detections</h4>
+      {% if preds %}
+      <ul>
+        {% for p in preds %}
+        <li><b>{{ p.label }}</b> — {{ (p.confidence*100)|round(1) }}%</li>
+        {% endfor %}
+      </ul>
+      {% else %}
+      <p>No faces detected.</p>
+      {% endif %}
+    </div>
+  </div>
+  {% endif %}
+</div>
+{% endblock %}

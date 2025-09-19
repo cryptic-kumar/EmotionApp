@@ -1,0 +1,14 @@
+# Node modules
+node_modules/
+
+# Python virtual environment
+venv/
+
+# Large model files
+*.h5
+*.mp4
+*.zip
+
+# OS files
+.DS_Store
+Thumbs.db

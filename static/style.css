@@ -1,0 +1,151 @@
+:root {
+  --bg: #071426;
+  --card: #0f1720;
+  --accent: #ff66c4;
+  --text: #e6eef8;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  font-family: Inter, Arial, Helvetica, sans-serif;
+  background: linear-gradient(180deg, #071426, #0b2437);
+  color: var(--text);
+}
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 18px;
+  background: rgba(0, 0, 0, 0.2);
+}
+.nav a {
+  color: var(--text);
+  text-decoration: none;
+  margin-left: 12px;
+}
+.nav-left a {
+  font-weight: 700;
+}
+.container {
+  max-width: 980px;
+  margin: 20px auto;
+  padding: 12px;
+}
+.main {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 12px;
+}
+.card {
+  background: var(--card);
+  padding: 18px;
+  border-radius: 10px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+  margin-bottom: 18px;
+}
+.auth-card {
+  max-width: 420px;
+  margin: 30px auto;
+}
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="file"],
+input[type="number"] {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.02);
+  color: var(--text);
+}
+.btn {
+  background: var(--accent);
+  border: none;
+  color: #071426;
+  padding: 10px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.btn.muted {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text);
+}
+.row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.muted {
+  color: rgba(255, 255, 255, 0.6);
+  text-decoration: none;
+}
+.flashes {
+  list-style: none;
+  padding: 0;
+  margin: 8px 0;
+}
+.flashes li {
+  background: #3b4250;
+  padding: 8px;
+  border-radius: 6px;
+  margin-bottom: 6px;
+}
+.modes {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.mode-card {
+  display: block;
+  flex: 1;
+  min-width: 240px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent);
+  padding: 12px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: var(--text);
+}
+.video-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 640px;
+  margin: 10px auto;
+}
+video {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  background: #000;
+}
+#overlay {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+.predictions-box {
+  margin-top: 14px;
+}
+.bubble {
+  background: rgba(2, 12, 18, 0.6);
+  padding: 8px;
+  border-radius: 8px;
+  margin: 6px 0;
+}
+.result-block {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+@media (min-width: 900px) {
+  .result-block {
+    flex-direction: row;
+  }
+}

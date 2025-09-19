@@ -1,0 +1,37 @@
+{% extends "base.html" %} {% block content %}
+<div class="card">
+  <h2>Real-Time Monitoring</h2>
+  <p>
+    Allow camera access and press <b>Start Camera</b>. To stop, press
+    <b>Stop</b>.
+  </p>
+
+  <div class="video-wrap">
+    <video id="video" autoplay playsinline></video>
+    <canvas id="overlay"></canvas>
+    <canvas id="frame" width="480" height="360" style="display: none"></canvas>
+  </div>
+
+  <div class="controls">
+    <button id="startBtn" class="btn">Start Camera</button>
+    <button id="stopBtn" class="btn muted">Stop</button>
+    <label>Interval (ms):</label>
+    <input id="interval" type="number" value="700" min="200" />
+  </div>
+
+  <div id="status">Status: idle</div>
+
+  <div class="predictions-box">
+    <h3>Predictions</h3>
+    <div id="predictions">—</div>
+
+    <h3>Recommendations</h3>
+    <div id="recommendation">—</div>
+
+    <h3>History</h3>
+    <canvas id="historyChart" height="140"></canvas>
+  </div>
+</div>
+
+<script src="{{ url_for('static', filename='monitor.js') }}"></script>
+{% endblock %}

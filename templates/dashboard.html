@@ -1,0 +1,20 @@
+{% extends "base.html" %} {% block content %}
+<div class="card">
+  <h2>Dashboard</h2>
+  <p>Choose a mode:</p>
+  <div class="modes">
+    <a class="mode-card" href="{{ url_for('predict_image') }}">
+      <h3>Predict from Image</h3>
+      <p>Upload a single image and get detection + recommendations.</p>
+    </a>
+    <a class="mode-card" href="{{ url_for('monitor') }}">
+      <h3>Real-Time Monitoring</h3>
+      <p>Use your webcam for live emotion detection (no video uploads).</p>
+    </a>
+  </div>
+  <hr />
+  <h3>Quick Launch</h3>
+  <p>Or open the monitor right here:</p>
+  <a class="btn" href="{{ url_for('monitor') }}">Open Real-Time Monitor</a>
+</div>
+{% endblock %}
